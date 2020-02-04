@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>Quiz</h1>
+    <form action='/' method='POST'>
+        Question: <input type='text' name='question' id='question'>
+        <br>
+        Option 1: <input type='text' name='option1' id="option1">
+        <br>
+        Option 2: <input type='text' name='option2' id="option2">
+        <br>
+        Option 3: <input type='text' name='option3' id="option3">
+        <br>
+        Option 4: <input type='text' name='option4' id="option4">
+        <br>
+        <input type="submit" value="Add Question">
+    </form>
+    <hr>
+    <a href="/answers">I have finished making quiz</a>
+       {% for question in questions %}
+        <h2>{{ question.text }}</h2>
+
+        <input type="radio" name="option" value="option1"> {{ question.option1 }} <br>
+        <input type="radio" name="option" value="option2"> {{ question.option2 }} <br>
+        <input type="radio" name="option" value="option3"> {{ question.option3 }} <br>
+        <input type="radio" name="option" value="option4"> {{ question.option4 }} <br>
+
+        <a href="/delete/{{question.id}}">Delete</a>
+    {%  endfor %}
+{% endblock %}
